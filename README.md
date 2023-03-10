@@ -18,7 +18,7 @@ PHP >= 8.1
 
 via Composer:
 ```
-composer require alirezasalehizadeh/quick-array
+composer require alirezasalehizadeh/quick-array:1.0.0
 ```
 
 ## Usage
