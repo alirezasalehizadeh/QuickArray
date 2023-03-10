@@ -57,7 +57,7 @@ $arr->resize(int $size):bool  // Change the size of an array
 
 $arr->toArray() // Returns a PHP array from the fixed array
 
-$arr->valid() // Check whether the array contains more elements
+$arr->valid():bool // Check whether the array contains more elements
 
 $arr->__wakeup()  // Reinitialises the array after being unserialised
 ```
