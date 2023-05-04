@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Alirezasalehizadeh\QuickArray;
 
 class QuickArray extends \SplFixedArray
@@ -18,7 +20,7 @@ class QuickArray extends \SplFixedArray
      *
      * @return void
      */
-    public function push($index, $value)
+    public function push(mixed $index, mixed $value): void
     {
         $this[$index] = $value;
     }
@@ -31,7 +33,7 @@ class QuickArray extends \SplFixedArray
      *
      * @return new SplFixedArray
      */
-    public function pushArray(array $array, bool $preserveKeys = true)
+    public function pushArray(array $array, bool $preserveKeys = true): object
     {
         return $this->fromArray($array, $preserveKeys);
     }
@@ -63,9 +65,9 @@ class QuickArray extends \SplFixedArray
      *
      * @param mixed $index
      *
-     * @return void
+     * @return mixed
      */
-    public function get($index)
+    public function get(mixed $index): mixed
     {
         return $this->offsetGet($index);
     }
@@ -78,7 +80,7 @@ class QuickArray extends \SplFixedArray
      *
      * @return void
      */
-    public function set($index, $value)
+    public function set(mixed $index, mixed $value): void
     {
         $this->offsetSet($index, $value);
     }
@@ -90,7 +92,8 @@ class QuickArray extends \SplFixedArray
      *
      * @return void
      */
-    public function unset($index) {
+    public function unset(mixed $index): void
+    {
         $this->offsetUnset($index);
     }
 
@@ -101,8 +104,20 @@ class QuickArray extends \SplFixedArray
      *
      * @return boolean
      */
-    public function exists($index): bool
+    public function exists(mixed $index): bool
     {
         return $this->offsetExists($index);
+    }
+
+    /**
+     * Applies the callback to the elements of the array
+     *
+     * @param callable $callback
+     *
+     * @return array
+     */
+    public function each(callable $callback): array
+    {
+        return array_map($callback, $this->toArray());
     }
 }

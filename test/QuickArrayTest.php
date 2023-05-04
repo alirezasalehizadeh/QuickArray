@@ -1,4 +1,5 @@
 <?php
+
 namespace Alirezasalehizadeh\QuickArray\Test;
 
 use Alirezasalehizadeh\QuickArray\QuickArray;
@@ -86,5 +87,16 @@ class QuickArrayTest extends TestCase
 
         $this->assertTrue($arr->exists(1));
         $this->assertFalse($arr->exists(2));
+    }
+
+    /** @test */
+    public function canAppliesTheCallbackToTheElementsOfTheArrayTest()
+    {
+        $arr = new QuickArray(2);
+
+        $arr->push(0, 'foo');
+        $arr->push(1, 'bar');
+
+        $this->assertSame([0 => 'test foo', 1 => 'test bar'], $arr->each(fn ($e) => 'test ' . $e));
     }
 }
