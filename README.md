@@ -18,7 +18,7 @@ PHP >= 8.1
 
 via Composer:
 ```
-composer require alirezasalehizadeh/quick-array:1.0.0
+composer require alirezasalehizadeh/quick-array
 ```
 
 ## Usage
@@ -58,6 +58,8 @@ $arr->resize(int $size):bool  // Change the size of an array
 $arr->toArray() // Returns a PHP array from the fixed array
 
 $arr->valid():bool // Check whether the array contains more elements
+
+$arr->each($callback):array // Applies the callback to the elements of the array
 
 $arr->__wakeup()  // Reinitialises the array after being unserialised
 ```
